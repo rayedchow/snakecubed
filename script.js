@@ -8,6 +8,7 @@ var dead = false;
 var score = 0;
 var pause = true;
 var game = false;
+var saysIsDead = false;
 var AI = document.getElementById('ai').checked;
 var nums = [];
 
@@ -18,6 +19,7 @@ document.getElementById('startbtn').onclick = () => {
   if (dead) {
     snake = [[10, 10, 8], [10, 10, 9], [10, 10, 10]];
     dead = false;
+    saysIsDead = false;
     camera(-200, -220, -200,   // camera position (x, y, z)
       -100, -100, -100,   // camera target (look at position) (x, y, z)
       0, 1, 0);  // camera up axis: Y axis here
@@ -405,7 +407,13 @@ function draw() {
   if (AI) frameRate(1000);
   else frameRate(4);
 
-  if (dead) document.getElementById("startbtn").innerHTML = "Restart";
+  if (dead){
+    if(!saysIsDead){
+      alert("You Are Dead");
+      saysIsDead = true;
+    }
+    document.getElementById("startbtn").innerHTML = "Restart";
+  }
   else document.getElementById("startbtn").innerHTML = "Start";
 
   document.getElementById("score").innerHTML = `Score: ${snake.length - 3}`;
