@@ -1,0 +1,17 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.float-container {
+  border: 3px solid #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+    position: fixed; 
+    overflow-y: scroll;
+    width: 100%;
+}
